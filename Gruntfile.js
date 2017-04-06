@@ -152,6 +152,16 @@ module.exports = function (grunt) {
     // for them
     clean: {
       build: ["build/img/*"]
+    },
+    connect: {
+        server: {
+            options: {
+                port: 8000,
+                hostname: '*',
+                keepalive: true
+//                ,base: ['src/']
+            }
+        }
     }
   });
 
@@ -175,10 +185,13 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-csslint');
   // Lint Bootstrap
   grunt.loadNpmTasks('grunt-bootlint');
-
+  
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  
   // Linting task
   grunt.registerTask('lint', ['jshint', 'csslint', 'bootlint']);
 
   // The default task (running "grunt" in console) is "watch"
   grunt.registerTask('default', ['watch']);
+
 };
